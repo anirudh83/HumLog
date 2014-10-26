@@ -4,5 +4,9 @@ package com.anirudh;
  * Created by anirudh on 21/10/14.
  */
 public interface EventManager {
-    void post(Event Event);
+
+    public void post(Event event);
+
+    void register(LogType logType,Processor processor);
+
 }

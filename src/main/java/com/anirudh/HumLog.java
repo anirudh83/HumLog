@@ -1,18 +1,25 @@
 package com.anirudh;
 
+
 /**
  * Created by anirudh on 21/10/14.
  */
 public class HumLog {
 
-    public HumLog getLogger(){
-        return new HumLog();
+    private static HumLog INSTANCE = new HumLog();
+    private static EventManager eventManager;
+
+
+    public static HumLog getLogger() {
+        eventManager = EventManagerFactory.getLogEventManager();
+        eventManager.register(LogType.DEBUG,new LogProcessor());
+        return INSTANCE;
     }
 
-    EventManager eventManager = new EventManagerFactory().getLogEventManager();
 
-    public void log(String message,LogType logType){
-        Event logEvent = new Event(message,logType);
+
+    public void log(String message, LogType logType) {
+        Event logEvent = new Event(message, logType);
         eventManager.post(logEvent);
     }
 }

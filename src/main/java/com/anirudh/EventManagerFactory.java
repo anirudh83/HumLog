@@ -5,7 +5,9 @@ package com.anirudh;
  */
 public class EventManagerFactory {
 
-    public EventManager getLogEventManager(){
-        return new LogEventManager();
+    private static EventManager INSTANCE =  new LogEventManager();
+
+    public static EventManager getLogEventManager(){
+        return INSTANCE;
     }
 }

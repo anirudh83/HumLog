@@ -5,8 +5,15 @@ package com.anirudh;
  */
 public class LogProcessor implements Processor {
 
+    private EventManager eventManager;
+
     @Override
     public void execute(Event event) {
+        System.out.println(event.getLogType() + " Message Received " + event.getMessage());
+    }
+
+    @Override
+    public void shutdown() {
 
     }
 
